@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+      "target": "es5",                                 // Especifica el objetivo de compatibilidad ECMAScript para el código compilado.
+      "module": "commonjs",                            // Especifica el sistema de módulos.
+      "strict": false,                                  // Habilita una serie de opciones estrictas de tipo.
+      "esModuleInterop": true,                         // Permite la interoperabilidad de importación predeterminada con módulos CommonJS y AMD.
+      "outDir": "./dist",                              // Ruta de salida para los archivos compilados.
+      "sourceMap": true,                               // Genera archivos .map para la depuración.
+      "noImplicitAny": true,                           // Genera un error en expresiones y declaraciones con un tipo 'any' implícito.
+      "moduleResolution": "node",                      // Estrategia de resolución de módulos.
+      "baseUrl": "./",                                 // Directorio base para resolver nombres de módulos no relativos.
+      "paths": {                                       // Especifica una serie de entradas que remapean las importaciones a ubicaciones de búsqueda alternativas.
+        "*": ["node_modules/*"]
+      },
+      "skipLibCheck": true                             // Omite la verificación de tipo para todas las declaraciones en archivos .d.ts.
+    },
+    "include": [
+      "src/**/*"        ,
+      "src/infrastructure/server/server.ts"      // Especifica un patrón de archivo o una lista de archivos para incluir en el programa.
+, "src/infrastructure/server/server.ts"    ],
+    "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+    ]
+  }
+  

@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+      - "9229:9229"  # Puerto para la depuración remota
+    environment:
+      - NODE_ENV=development
+      - DB_URL=mongodb://mongo:27017/blogged
+      - PORT=3000
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
+    depends_on:
+      - mongo
+    stdin_open: true
+    tty: true
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

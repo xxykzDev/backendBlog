@@ -1,0 +1,18 @@
+# Utiliza una imagen de Node.js como base
+FROM node:16
+
+# Establece el directorio de trabajo en el contenedor
+WORKDIR /usr/src/app
+
+# Copia el package.json y package-lock.json (si está disponible)
+COPY package*.json ./
+
+# Instala las dependencias del proyecto, incluyendo las de desarrollo
+# Instala nodemon globalmente
+RUN npm install && npm install -g nodemon
+
+# Expone el puerto que tu aplicación utiliza
+EXPOSE 3000
+
+# Define el comando para ejecutar la aplicación usando nodemon para recarga en vivo
+CMD ["nodemon", "--watch", "src/**/*", "-e", "ts,tsx", "--exec", "ts-node", "src/infrastructure/server/server.ts"]
